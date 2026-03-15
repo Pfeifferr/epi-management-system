@@ -1,0 +1,18 @@
+/* 
+Estilização base aplicada aos campos de input do formulário de segurança da conta.
+Serve como fallback para manter consistência visual com Bootstrap
+caso os widgets do Django Form não tenham classes personalizadas.
+*/
+form input {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+
+{# Bloco de conteúdo destinado às páginas de autenticação. #}
+{# Este bloco é definido no template base e sobrescrito aqui #}
+{# para renderizar o formulário de login. #}
+
+{% block content_auth %}
+
+{# Card principal que centraliza o formulário de autenticação #}
+<div class="card shadow border-0">
+    <div class="card-body p-5 text-center">
+
+        {# Cabeçalho visual da aplicação exibido na tela de login #}
+        <h3 class="fw-bold mb-4 text-primary">
+            <i class="fa-solid fa-helmet-safety"></i> EPI Manager
+        </h3>
+
+        {# Mensagem informativa para orientar o usuário #}
+        <p class="text-muted mb-4">Acesse sua conta para gerenciar o estoque</p>
+        
+        {# 
+        Formulário de autenticação do sistema.
+        Enviado via POST para evitar exposição de credenciais na URL.
+        #}
+        <form method="POST">
+
+            {# Token de proteção contra ataques CSRF exigido pelo Django #}
+            {% csrf_token %}
+
+            {# Campo de identificação do usuário (utilizando CPF como username) #}
+            <div class="mb-3 text-start">
+                <label class="form-label fw-semibold">Usuário (CPF)</label>
+                <input 
+                    type="text" 
+                    name="username" 
+                    class="form-control form-control-lg" 
+                    placeholder="Digite seu CPF" 
+                    required
+                >
+            </div>
+
+            {# Campo de senha para autenticação do usuário #}
+            <div class="mb-4 text-start">
+                <label class="form-label fw-semibold">Senha</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    class="form-control form-control-lg" 
+                    placeholder="Digite sua senha" 
+                    required
+                >
+            </div>
+
+            {# Botão responsável por submeter o formulário de login #}
+            <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
+                Entrar
+            </button>
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

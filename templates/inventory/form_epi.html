@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{# Título exibido na aba do navegador #}
+{% block title %}{{ titulo }} — EPI Manager{% endblock %}
+
+{# Título exibido no header da página #}
+{% block page_title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+
+{# Container principal da página de cadastro/edição de EPI #}
+<div class="container py-4">
+
+    {# Card centralizado contendo o formulário #}
+    <div class="card shadow-sm border-0" style="max-width: 800px; margin: auto;">
+
+        {# Cabeçalho do card #}
+        <div class="card-header bg-white border-bottom">
+            <h4 class="mb-0 text-primary">
+                <i class="bi bi-box-seam me-2"></i>
+                {{ titulo }}
+            </h4>
+        </div>
+
+        <div class="card-body p-4">
+
+            {# Formulário de cadastro/edição de EPI #}
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {# Grid responsivo para os campos do formulário #}
+                <div class="row g-3">
+
+                    {# Renderização dinâmica de todos os campos do Django Form #}
+                    {% for field in form %}
+
+                    <div class="col-md-6">
+
+                        {# Label do campo #}
+                        <label class="form-label fw-bold">
+                            {{ field.label }}
+                        </label>
+
+                        {# Campo do formulário #}
+                        {{ field }}
+
+                        {# Texto de ajuda opcional definido no forms.py #}
+                        {% if field.help_text %}
+                            <div class="form-text">
+                                {{ field.help_text }}
+                            </div>
+                        {% endif %}
+
+                        {# Mensagens de erro de validação do campo #}
+                        {% for error in field.errors %}
+                            <div class="text-danger small">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+                {# Área de botões do formulário #}
+                <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
+
+                    <a href="{% url 'lista_epis' %}" class="btn btn-light">
+                        Cancelar
+                    </a>
+
+                    <button type="submit" class="btn btn-success px-4">
+                        Salvar EPI
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

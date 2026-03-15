@@ -1,0 +1,17 @@
+/* 
+Estilos específicos da página de dashboard.
+Responsável por pequenos ajustes visuais que não pertencem
+ao layout global definido em base.css.
+*/
+
+.chart-container {
+    height: 300px;
+}
+
+.activity-item {
+    transition: background-color 0.2s ease;
+}
+
+.activity-item:hover {
+    background-color: #f8f9fa;
+}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# Define o título da página exibido na aba do navegador (bloco definido no base.html) #}
+{% block title %}Mudar Senha{% endblock %}
+
+{# Título exibido na área de cabeçalho da página, herdado do layout base #}
+{% block page_title %}Segurança da Conta{% endblock %}
+
+{# Importação do CSS específico da página de segurança da conta #}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/conta.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{# Container principal responsável por centralizar o card de alteração de senha #}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+
+        {# Coluna centralizada com largura média para manter boa legibilidade do formulário #}
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 rounded-4">
+
+                {# Corpo do card contendo o formulário de alteração de senha #}
+                <div class="card-body p-4 p-md-5">
+
+                    {# Cabeçalho visual da seção de segurança da conta #}
+                    <div class="text-center mb-4">
+                        <i class="bi bi-shield-lock-fill text-primary" style="font-size: 3rem;"></i>
+                        <h3 class="fw-bold mt-2">Alterar Senha</h3>
+                        <p class="text-muted">Crie uma nova senha forte para sua conta.</p>
+                    </div>
+
+                    {# Formulário responsável pela atualização da senha do usuário #}
+                    {# Enviado via POST e protegido contra CSRF. #}
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        {# 
+                        Iteração dinâmica pelos campos do Django Form.
+                        Permite renderizar todos os campos definidos no backend
+                        sem precisar declarar cada um manualmente no template.
+                        #}
+                        {% for field in form %}
+                            <div class="mb-3">
+
+                                {# Label gerado a partir da definição do campo no Django Form #}
+                                <label class="form-label fw-semibold">{{ field.label }}</label>
+
+                                {# Renderização do input associado ao campo #}
+                                {{ field }}
+
+                                {# Exibição opcional de texto de ajuda configurado no Form #}
+                                {% if field.help_text %}
+                                    <div class="form-text text-muted" style="font-size: 0.8em;">
+                                        {{ field.help_text }}
+                                    </div>
+                                {% endif %}
+
+                                {# Exibição de mensagens de erro de validação associadas ao campo #}
+                                {% for error in field.errors %}
+                                    <div class="text-danger mt-1" style="font-size: 0.85em;">
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+
+                            </div>
+                        {% endfor %}
+
+                        {# Área de ações do formulário (salvar ou cancelar operação) #}
+                        <div class="d-grid gap-2 mt-4">
+
+                            {# Botão responsável por submeter o formulário e atualizar a senha #}
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                Salvar Nova Senha
+                            </button>
+
+                            {# Link para retornar à página de edição de perfil sem salvar alterações #}
+                            <a href="{% url 'editar_perfil' %}" class="btn btn-light">
+                                Cancelar
+                            </a>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

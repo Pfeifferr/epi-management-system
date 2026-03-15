@@ -1,0 +1,23 @@
+# Ambiente Virtual
+venv/
+env/
+.venv/
+
+# Banco de Dados Local (Não suba o banco de testes pro portfólio!)
+db.sqlite3
+
+# Arquivos temporários do Python
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Arquivos de Mídia (Uploads de usuários, fotos de perfil, etc)
+media/
+
+# Variáveis de Ambiente (Onde ficam senhas reais no futuro)
+.env
+
+# Arquivos do Sistema Operacional
+.DS_Store
+Thumbs.db

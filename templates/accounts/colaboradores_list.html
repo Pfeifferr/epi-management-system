@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    {# Cabeçalho da página com título e botão de criação #}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">👥 Gestão de Colaboradores</h2>
+        <a href="{% url 'cadastrar_colaborador' %}" class="btn btn-primary shadow-sm">
+            + Novo Colaborador
+        </a>
+    </div>
+
+    {# Exibição de mensagens de feedback (success, error, info, etc) #}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show shadow-sm" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {# Formulário de busca rápida (GET) #}
+    <div class="card shadow-sm border-0 mb-4">
+        <div class="card-body">
+            <form method="GET" action="{% url 'listar_colaboradores' %}" class="d-flex">
+                {# Campo de pesquisa suporta nome, CPF ou matrícula #}
+                <input type="text" 
+                       name="q" 
+                       class="form-control me-2" 
+                       placeholder="Pesquisar por nome, CPF ou matrícula..." 
+                       value="{{ query }}">
+                <button type="submit" class="btn btn-secondary">Pesquisar</button>
+                
+                {# Botão de limpar aparece apenas quando há filtro ativo #}
+                {% if query %}
+                    <a href="{% url 'listar_colaboradores' %}" 
+                       class="btn btn-outline-danger ms-2">
+                        Limpar
+                    </a>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+
+    {# Container principal da tabela de resultados #}
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Colaborador</th>
+                            <th>CPF</th>
+                            <th>Matrícula</th>
+                            <th>Perfil</th>
+                            <th class="text-end pe-4">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for colab in colaboradores %}
+                        <tr>
+                            {# Coluna com foto + nome + email #}
+                            <td class="ps-3">
+                                <div class="d-flex align-items-center">
+                                    {# Foto do colaborador ou inicial estilizada #}
+                                    {% if colab.foto %}
+                                        <img src="{{ colab.foto.url }}" 
+                                             alt="Foto de {{ colab.first_name }} {{ colab.last_name }}" 
+                                             class="rounded-circle me-3" 
+                                             style="width: 45px; height: 45px; object-fit: cover; border: 2px solid #eee;">
+                                    {% else %}
+                                        <div class="rounded-circle bg-secondary d-flex justify-content-center align-items-center text-white me-3 fw-bold"
+                                             style="width: 45px; height: 45px; font-size: 1.2rem;">
+                                            {{ colab.first_name|first|upper }}
+                                        </div>
+                                    {% endif %}
+                                    
+                                    <div>
+                                        <div class="fw-bold text-dark">
+                                            {{ colab.first_name }} {{ colab.last_name }}
+                                        </div>
+                                        <div class="text-muted small">
+                                            {{ colab.email|default:"Sem e-mail" }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>{{ colab.cpf }}</td>
+                            <td>{{ colab.matricula }}</td>
+
+                            {# Exibe o nome amigável do perfil (choices do model) #}
+                            <td>
+                                <span class="badge bg-info text-dark">
+                                    {{ colab.get_perfil_display }}
+                                </span>
+                            </td>
+
+                            {# Ações inline (editar / excluir) #}
+                            <td class="text-end pe-3">
+                                <a href="{% url 'editar_colaborador' colab.id %}" 
+                                   class="btn btn-sm btn-outline-primary me-1">
+                                    Editar
+                                </a>
+                                <a href="{% url 'deletar_colaborador' colab.id %}" 
+                                   class="btn btn-sm btn-outline-danger">
+                                    Excluir
+                                </a>
+                            </td>
+                        </tr>
+
+                        {% empty %}
+                        {# Estado vazio com mensagem amigável #}
+                        <tr>
+                            <td colspan="5" class="text-center py-5 text-muted">
+                                <h5 class="mb-1">Nenhum colaborador encontrado</h5>
+                                <p class="mb-0">
+                                    Tente ajustar a sua pesquisa ou cadastre um novo colaborador.
+                                </p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
