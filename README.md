@@ -84,5 +84,5 @@ Siga os passos abaixo para rodar o **EPI Manager** em sua máquina local:
 ```bash
 git clone [https://github.com/seu-usuario/epi-manager.git](https://github.com/seu-usuario/epi-manager.git)
 cd epi-manager
-
+´´´
 ### 2. Configurar o Ambiente Virtual
