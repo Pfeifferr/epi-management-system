@@ -36,3 +36,22 @@ O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma or
 * **📦 Controle de Inventário:** Gerenciamento de Equipamentos com registro de CA (Certificado de Aprovação), fabricante e data de validade.
 * **📑 Registro de Movimentações:** Histórico completo de entregas e devoluções, garantindo a rastreabilidade de cada item.
 * **📄 Emissão de Documentos:** Geração automática da ficha de entrega de EPI em conformidade com a NR-6 (Pronto para impressão).
+
+## 📸 Demonstração do Sistema
+
+Abaixo, apresento a interface principal do sistema, focada em usabilidade e eficiência operacional.
+
+| 📊 Dashboard de Indicadores | 📦 Gestão de Inventário (EPIs) |
+| :---: | :---: |
+| ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) | ![Inventário](LINK_DA_IMAGEM_INVENTARIO) |
+| *Visão geral de estoque e alertas críticos.* | *Controle de CA, Fabricante e Validades.* |
+
+| 👥 Cadastro de Colaboradores | 🔐 Login & Hierarquia |
+| :---: | :---: |
+| ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) | ![Login](LINK_DA_IMAGEM_LOGIN) |
+| *Gestão de perfis com foto e setor.* | *Acesso seguro baseado em níveis de permissão.* |
+
+| 📑 Geração de Ficha NR-6 (PDF) |
+| :---: |
+| ![Ficha PDF](LINK_DA_IMAGEM_PDF) |
+| *Documento gerado automaticamente para conformidade legal.* |
