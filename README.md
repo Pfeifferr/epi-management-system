@@ -43,7 +43,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Admin) |
 | :---: | :---: |
-| ![Login](LINK_DA_IMAGEM_LOGIN) | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
+| ![Login]https://github.com/Pfeifferr/epi-management-system/issues/1#issue-4116998370 | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
 | *Autenticação segura e direcionamento por perfil.* | *Gráficos de estoque e alertas de conformidade.* |
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
