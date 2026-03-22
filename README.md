@@ -179,7 +179,7 @@ O sistema possui mapeamento de rotas focado na gestão e emissão de relatórios
 Desenvolvido por **Pfeiffer**
 
 * **LinkedIn:** https://www.linkedin.com/in/christoferpfeiffer/
-* **GitHub:** [Adicione seu GitHub aqui](https://github.com/seu-usuario)
+* **GitHub:** https://github.com/Pfeifferr
 
 ---
 
