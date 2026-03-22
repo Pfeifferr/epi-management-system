@@ -43,7 +43,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Admin) |
 | :---: | :---: |
-| ![Login](<img width="1901" height="902" alt="Image" src="https://github.com/user-attachments/assets/9f0459a0-1570-44ee-bdf9-9b70fd6ec52b" />) | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
+| ![Login]<img width="1901" height="902" alt="Image" src="https://github.com/user-attachments/assets/9f0459a0-1570-44ee-bdf9-9b70fd6ec52b" /> | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
 | *Autenticação segura e direcionamento por perfil.* | *Gráficos de estoque e alertas de conformidade.* |
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
