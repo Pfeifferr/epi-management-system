@@ -55,7 +55,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
 | :---: | :---: |
-| ![Entrega]<img width="1894" height="904" alt="Image" src="https://github.com/user-attachments/assets/0f007200-ebc6-4175-a7d7-d864171df33a" /> | ![Colaborador]<img width="1894" height="905" alt="image" src="https://github.com/user-attachments/assets/ef18475b-7606-47e1-9b00-161cc2871321" />
+| ![Entrega]<img width="1894" height="904" alt="Image" src="https://github.com/user-attachments/assets/0f007200-ebc6-4175-a7d7-d864171df33a" /> | ![Colaborador]<img width="1894" height="905" alt="Image" src="https://github.com/user-attachments/assets/93380a40-cceb-4f28-92f9-a25885495230" />
  |
 | *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
 
