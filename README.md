@@ -63,9 +63,16 @@ Abaixo, as interfaces principais e os diferentes níveis de acesso do sistema:
 | ![Ficha PDF](https://github.com/user-attachments/assets/97006d9c-ee71-4a0e-a3c3-4d8651c63e02) | ![Edição de Perfil](https://github.com/user-attachments/assets/d952ac92-acf2-4185-8f61-eaab058b8e0a) |
 | *Documento gerado automaticamente para assinatura.* | *Área para personalização e upload de foto.* |
 
-## 🛠️ Como Rodar o Projeto
+## 🛠️ Stack Tecnológica
 
-### 1. Clonar o Repositório
-```bash
-git clone [https://github.com/Pfeifferr/epi-management-system.git](https://github.com/Pfeifferr/epi-management-system.git)
-cd epi-management-system
+O sistema foi desenvolvido utilizando as tecnologias mais recentes do ecossistema Python/Django para garantir performance e segurança:
+
+* **Core:** Python 3.12+ | Django 6.0.3
+* **Banco de Dados:** MySQL (via PyMySQL)
+* **Interface:** Bootstrap 5.3 | Font Awesome 6 | Google Fonts
+* **Gráficos e BI:** Chart.js (Integração via JSON dinâmico no Django)
+* **Processamento de Documentos:**
+    * `xhtml2pdf` & `reportlab`: Geração técnica de fichas NR-6.
+    * `pypdf` & `pyHanko`: Manipulação avançada e segurança de documentos.
+    * `Pillow`: Processamento de fotos de perfil e otimização de imagens.
+* **Comunicação:** `Requests` e `urllib3` para integrações externas.
