@@ -61,7 +61,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 📄 Geração de Ficha NR-6 (PDF) | ⚙️ Edição de Perfil e Foto |
 | :---: | :---: |
-| ![Ficha PDF]<img width="1663" height="865" alt="Image" src="https://github.com/user-attachments/assets/97006d9c-ee71-4a0e-a3c3-4d8651c63e02" /> | ![Edição de Perfil](LINK_DA_IMAGEM_PERFIL) |
+| ![Ficha PDF]<img width="1663" height="865" alt="Image" src="https://github.com/user-attachments/assets/97006d9c-ee71-4a0e-a3c3-4d8651c63e02" /> | ![Edição de Perfil]<img width="1889" height="897" alt="Image" src="https://github.com/user-attachments/assets/d952ac92-acf2-4185-8f61-eaab058b8e0a" /> |
 | *Documento gerado automaticamente para assinatura.* | *Área para personalização e upload de foto.* |
 
 ## 🛠️ Como Rodar o Projeto
