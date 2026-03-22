@@ -55,7 +55,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
 | :---: | :---: |
-| ![Entrega](LINK_DA_IMAGEM_ENTREGA) | ![Colaborador](LINK_DA_IMAGEM_COLABORADOR) |
+| ![Entrega]<img width="1894" height="904" alt="Image" src="https://github.com/user-attachments/assets/0f007200-ebc6-4175-a7d7-d864171df33a" /> | ![Colaborador](LINK_DA_IMAGEM_COLABORADOR) |
 | *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
 
 | 📄 Geração de Ficha NR-6 (PDF) | ⚙️ Edição de Perfil e Foto |
