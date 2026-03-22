@@ -39,17 +39,15 @@ O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma or
 
 ## 📸 Demonstração do Sistema
 
-Abaixo, apresento a interface principal do sistema, focada em usabilidade e eficiência operacional.
-
-| 📊 Dashboard de Indicadores | 📦 Gestão de Inventário (EPIs) |
+| 🔐 Portal de Acesso | 📊 Dashboard de Indicadores |
 | :---: | :---: |
-| ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) | ![Inventário](LINK_DA_IMAGEM_INVENTARIO) |
-| *Visão geral de estoque e alertas críticos.* | *Controle de CA, Fabricante e Validades.* |
+| ![Login](LINK_DA_IMAGEM_LOGIN) | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
+| *Sistema de autenticação com níveis de permissão.* | *Visão geral de estoque e alertas críticos.* |
 
-| 👥 Cadastro de Colaboradores | 🔐 Login & Hierarquia |
+| 📦 Gestão de Inventário (EPIs) | 👥 Cadastro de Colaboradores |
 | :---: | :---: |
-| ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) | ![Login](LINK_DA_IMAGEM_LOGIN) |
-| *Gestão de perfis com foto e setor.* | *Acesso seguro baseado em níveis de permissão.* |
+| ![Inventário](LINK_DA_IMAGEM_INVENTARIO) | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
+| *Controle de CA, Fabricante e Validades.* | *Gestão de perfis com foto e setor.* |
 
 | 📑 Geração de Ficha NR-6 (PDF) |
 | :---: |
