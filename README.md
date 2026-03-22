@@ -22,3 +22,17 @@ O projeto foi construído com uma stack moderna, focada em estabilidade e escala
 | **Interface** | [Bootstrap 5](https://getbootstrap.com/) | UI Responsiva e componentes modernos. |
 | **Relatórios** | [xhtml2pdf](https://github.com/xhtml2pdf/xhtml2pdf) | Geração de Fichas de EPI em formato PDF. |
 | **Estilos** | CSS3 Personalizado | Design System exclusivo do sistema. |
+
+## ✨ Funcionalidades
+
+O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma organização:
+
+* **🔐 Sistema de Autenticação com Hierarquia:**
+    * **Administrador/Gestor:** Acesso total ao sistema, gestão de usuários, inventário e relatórios.
+    * **Operador de Estoque:** Permissão para realizar entregas e baixas, sem acesso às configurações sensíveis.
+    * **Colaborador:** Acesso restrito para consulta de sua própria ficha de EPIs recebidos.
+* **📊 Dashboard de Indicadores:** Visualização clara e em tempo real do status do estoque, EPIs mais retirados e alertas críticos.
+* **👥 Gestão de Colaboradores:** Cadastro detalhado de funcionários, permitindo vincular fotos e organizar por setores/cargos.
+* **📦 Controle de Inventário:** Gerenciamento de Equipamentos com registro de CA (Certificado de Aprovação), fabricante e data de validade.
+* **📑 Registro de Movimentações:** Histórico completo de entregas e devoluções, garantindo a rastreabilidade de cada item.
+* **📄 Emissão de Documentos:** Geração automática da ficha de entrega de EPI em conformidade com a NR-6 (Pronto para impressão).
