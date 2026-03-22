@@ -41,27 +41,26 @@ O **EPI Manager** foi projetado para cobrir todo o ciclo de vida do equipamento 
 
 ## 📸 Demonstração do Sistema
 
-Abaixo, os diferentes níveis de acesso e funcionalidades principais:
+Abaixo, as interfaces principais e os diferentes níveis de acesso do sistema:
 
-| 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Admin) |
+| 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Geral) |
 | :---: | :---: |
-| ![Login]<img width="1901" height="902" alt="Image" src="https://github.com/user-attachments/assets/9f0459a0-1570-44ee-bdf9-9b70fd6ec52b" /> | ![Dashboard]<img width="1878" height="904" alt="Image" src="https://github.com/user-attachments/assets/fc6141ca-2107-4206-bedd-bcd4ce699707" /> |
+| ![Login](https://github.com/user-attachments/assets/9f0459a0-1570-44ee-bdf9-9b70fd6ec52b) | ![Dashboard](https://github.com/user-attachments/assets/fc6141ca-2107-4206-bedd-bcd4ce699707) |
 | *Autenticação segura e direcionamento por perfil.* | *Gráficos de estoque e alertas de conformidade.* |
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
 | :---: | :---: |
-| ![Inventário](https://github.com/user-attachments/assets/0870c495-fdb0-4bd6-81dc-1445f373691b) | ![Colaboradores]<img width="1900" height="903" alt="Image" src="https://github.com/user-attachments/assets/c8e1826e-8086-4213-b1f1-58eae8bdd486" /> |
+| ![Inventário](https://github.com/user-attachments/assets/0870c495-fdb0-4bd6-81dc-1445f373691b) | ![Colaboradores](https://github.com/user-attachments/assets/c8e1826e-8086-4213-b1f1-58eae8bdd486) |
 | *Controle de CA, Estoque e Validades.* | *Perfis com foto e monitoramento de ASO.* |
 
 | 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
 | :---: | :---: |
-| ![Entrega]<img width="1894" height="904" alt="Image" src="https://github.com/user-attachments/assets/0f007200-ebc6-4175-a7d7-d864171df33a" /> | ![Colaborador]<img width="1894" height="905" alt="Image" src="https://github.com/user-attachments/assets/93380a40-cceb-4f28-92f9-a25885495230" />
- |
-| *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
+| ![Entrega](https://github.com/user-attachments/assets/0f007200-ebc6-4175-a7d7-d864171df33a) | ![Colaborador](https://github.com/user-attachments/assets/93380a40-cceb-4f28-92f9-a25885495230) |
+| *Fluxo de baixa e gestão de custódia.* | *Interface simplificada e bloqueio de menus.* |
 
 | 📄 Geração de Ficha NR-6 (PDF) | ⚙️ Edição de Perfil e Foto |
 | :---: | :---: |
-| ![Ficha PDF]<img width="1663" height="865" alt="Image" src="https://github.com/user-attachments/assets/97006d9c-ee71-4a0e-a3c3-4d8651c63e02" /> | ![Edição de Perfil]<img width="1889" height="897" alt="Image" src="https://github.com/user-attachments/assets/d952ac92-acf2-4185-8f61-eaab058b8e0a" /> |
+| ![Ficha PDF](https://github.com/user-attachments/assets/97006d9c-ee71-4a0e-a3c3-4d8651c63e02) | ![Edição de Perfil](https://github.com/user-attachments/assets/d952ac92-acf2-4185-8f61-eaab058b8e0a) |
 | *Documento gerado automaticamente para assinatura.* | *Área para personalização e upload de foto.* |
 
 ## 🛠️ Como Rodar o Projeto
