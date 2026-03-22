@@ -43,23 +43,18 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Admin) |
 | :---: | :---: |
-| ![Login](https://github.com/Pfeifferr/epi-management-system/issues/1) | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
+| ![Login](https://github.com/user-attachments/assets/18445100-c9a1-408f-8d76-8575083f23c9) | ![Dashboard](https://github.com/user-attachments/assets/8e0f6312-d343-4f96-b072-132049d10e06) |
 | *Autenticação segura e direcionamento por perfil.* | *Gráficos de estoque e alertas de conformidade.* |
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
 | :---: | :---: |
-| ![Inventário](LINK_DA_IMAGEM_INVENTARIO) | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
+| ![Inventário](https://github.com/user-attachments/assets/3847847c-7836-4700-af15-08e6e58b99ef) | ![Colaboradores](https://github.com/user-attachments/assets/66840ef4-6725-45d6-8488-81df556f8f55) |
 | *Controle de CA, Estoque e Validades.* | *Perfis com foto e monitoramento de ASO.* |
 
-| 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
+| 📑 Registro de Entrega (Almoxarife) | 📄 Geração de Ficha NR-6 (PDF) |
 | :---: | :---: |
-| ![Entrega](LINK_DA_IMAGEM_ENTREGA) | ![Colaborador](LINK_DA_IMAGEM_COLABORADOR) |
-| *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
-
-| 📄 Geração de Ficha NR-6 (PDF) | ⚙️ Edição de Perfil e Foto |
-| :---: | :---: |
-| ![Ficha PDF](LINK_DA_IMAGEM_PDF) | ![Edição de Perfil](LINK_DA_IMAGEM_PERFIL) |
-| *Documento gerado automaticamente para assinatura.* | *Área para personalização e upload de foto.* |
+| ![Entrega](https://github.com/user-attachments/assets/a7657193-2708-410a-83ba-f0334863f68d) | ![Ficha PDF](https://github.com/user-attachments/assets/f4a0149f-ec3f-426b-968b-59d4c72808c1) |
+| *Fluxo de baixa e geração de ficha digital.* | *Documento gerado automaticamente para assinatura.* |
 
 ## 🛠️ Como Rodar o Projeto
 
