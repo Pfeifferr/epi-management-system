@@ -23,19 +23,21 @@ O projeto foi construído com uma stack moderna, focada em estabilidade e escala
 | **Relatórios** | [xhtml2pdf](https://github.com/xhtml2pdf/xhtml2pdf) | Geração de Fichas de EPI em formato PDF. |
 | **Estilos** | CSS3 Personalizado | Design System exclusivo do sistema. |
 
-## ✨ Funcionalidades
+## ✨ Funcionalidades e Diferenciais
 
-O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma organização:
+O **EPI Manager** foi projetado para cobrir todo o ciclo de vida do equipamento dentro de uma organização, unindo conformidade legal (NR-6) com automação inteligente:
 
-* **🔐 Sistema de Autenticação com Hierarquia (RBAC):**
-    * **Administrador/SST:** Acesso total, gestão de usuários, inventário e relatórios analíticos.
-    * **Almoxarife:** Foco operacional em entregas e baixas de estoque.
-    * **Colaborador:** Interface restrita para consulta de sua própria ficha e histórico.
-* **📊 Dashboard de Indicadores:** Visualização clara do status do estoque e alertas críticos de validade.
-* **👥 Gestão de Colaboradores & Perfis:** Cadastro detalhado de funcionários com **upload de foto de perfil**, organização por setores/cargos e monitoramento de exames médicos (ASO).
-* **📦 Controle de Inventário:** Gestão de CA (Certificado de Aprovação), fabricante e parâmetros de vida útil.
-* **📑 Registro de Movimentações:** Histórico completo de custódia, garantindo a rastreabilidade total.
-* **📄 Emissão de Documentos:** Geração automática da ficha de EPI em PDF conforme a NR-6.
+* **🔐 Sistema de Autenticação com Hierarquia (RBAC): Controle de acesso granular com perfis de Administrador (gestão total), SST/Técnico (gestão operacional e de inventário, com permissão para cadastrar apenas Colaboradores), Almoxarife (foco em movimentações) e Colaborador (interface restrita para consulta de sua própria ficha e histórico).
+* **📊 Dashboard de Indicadores (BI):** Visualização em tempo real do status do estoque, pendências de devolução e gráficos analíticos de movimentação semanal e ranking de EPIs.
+* **🚨 Sistema de Alertas Proativo:** Monitoramento inteligente no Dashboard para:
+    * **Validade de CA (NR-6):** Alerta visual crítico e bloqueio automático de novas entregas para equipamentos com Certificado de Aprovação vencido.
+    * **Exames Médicos (ASO/NR-7):** Notificação de colaboradores com exames médicos vencendo, garantindo a saúde ocupacional.
+    * **Análise Preditiva de Vida Útil:** Cálculo automático da durabilidade dos itens, gerando alertas de troca com margem de 5 dias para planejamento.
+* **👥 Gestão de Colaboradores & Perfis:** Cadastro detalhado de funcionários com **upload de foto de perfil**, organização por setores/cargos e monitoramento de histórico de saúde.
+* **📦 Gestão de Inventário Técnico & Visual: Controle completo de CA, fabricante e parâmetros de vida útil, com suporte a feedback visual por cores na listagem de equipamentos, sinalizando automaticamente níveis críticos de estoque para reposição.
+* **🔄 Fluxo de Baixa Inteligente:** Lógica de retorno ao estoque baseada no estado do item (Devolvido, Danificado ou Extraviado), com ajuste automático de saldo no inventário.
+* **📑 Registro de Movimentações:** Histórico imutável de custódia, garantindo a rastreabilidade total de quem utilizou cada equipamento e por quanto tempo.
+* **📄 Emissão de Documentos (PDF):** Geração automática da ficha de EPI conforme a **NR-6**, com todo o histórico de entregas pronto para assinatura e auditorias fiscais.
 
 ## 📸 Demonstração do Sistema
 
@@ -48,7 +50,8 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
 | :---: | :---: |
-| ![Inventário](LINK_DA_IMAGEM_INVENTARIO) | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
+| ![Inventário]![Uploading image.png…]()
+ | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
 | *Controle de CA, Estoque e Validades.* | *Perfis com foto e monitoramento de ASO.* |
 
 | 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
