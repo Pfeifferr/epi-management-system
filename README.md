@@ -65,36 +65,124 @@ Abaixo, as interfaces principais e os diferentes níveis de acesso do sistema:
 
 ## 🛠️ Stack Tecnológica
 
-O sistema foi desenvolvido utilizando tecnologias modernas do ecossistema Python/Django, priorizando performance, segurança e escalabilidade:
+O sistema foi desenvolvido utilizando tecnologias modernas do ecossistema Python/Django, priorizando performance, segurança jurídica e escalabilidade. A arquitetura foi dividida da seguinte forma:
 
 | Camada | Tecnologia | Finalidade |
 | :--- | :--- | :--- |
-| **Backend** | Python 3.12+ | Lógica de negócio e processamento do sistema |
-| **Framework** | Django 6.0.3 | Estrutura MVC, ORM e autenticação |
-| **Banco de Dados** | MySQL + PyMySQL 1.1.2 | Persistência de dados relacional |
-| **Frontend** | HTML5, CSS3, JavaScript | Estrutura e interatividade |
-| **UI/UX** | Bootstrap 5.3 | Interface responsiva |
-| **Ícones & Fontes** | Font Awesome 6, Bootstrap Icons, Google Fonts | Identidade visual |
-| **Gráficos (BI)** | Chart.js | Visualização de dados |
-| **PDF (Geração)** | xhtml2pdf, reportlab | Criação de documentos NR-6 |
-| **PDF (Manipulação)** | pypdf, pyHanko | Segurança e edição |
-| **Imagens** | Pillow | Processamento de imagens |
+| **Backend** | Python 3.12+ | Lógica de negócio e processamento principal do sistema |
+| **Framework** | Django 6.0.3 | Estrutura MVC, ORM, rotas e sistema de autenticação |
+| **Banco de Dados** | MySQL + PyMySQL 1.1.2 | Persistência relacional e integridade dos dados |
+| **Frontend** | HTML5, CSS3, JavaScript | Estrutura semântica e interatividade do lado do cliente |
+| **UI/UX** | Bootstrap 5.3 | Interface responsiva e padronização de componentes |
+| **Ícones & Fontes** | Font Awesome 6, Bootstrap Icons, Google Fonts | Identidade visual e sinalização de ações |
+| **Gráficos (BI)** | Chart.js | Renderização de dashboards dinâmicos para tomada de decisão |
+| **PDF (Geração)** | `xhtml2pdf`, `reportlab` | Criação autônoma das fichas de EPI (NR-6) |
+| **PDF (Manipulação)** | `pypdf`, `pyHanko` | Segurança, validação e manipulação de documentos |
+| **Imagens** | `Pillow` | Processamento inteligente e otimização de fotos de perfil |
 
 ---
 
 ## 🚀 Como Executar o Projeto
 
-Siga os passos abaixo para rodar o sistema localmente:
+### Pré-requisitos
+* Python 3.12 ou superior instalado.
+* Serviço do MySQL Server rodando localmente.
 
-### 📌 Pré-requisitos
+### Passo a Passo
 
-- Python 3.12 ou superior  
-- MySQL Server em execução  
+**1. Clone o repositório**
+```bash
+git clone [https://github.com/seu-usuario/epi-manager.git](https://github.com/seu-usuario/epi-manager.git)
+cd epi-manager
+```
+
+**2. Crie e ative o ambiente virtual**
+```bash
+# No Windows:
+python -m venv venv
+venv\Scripts\activate
+
+# No Linux/macOS:
+python -m venv venv
+source venv/bin/activate
+```
+
+**3. Instale as dependências**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Configure o Banco de Dados**
+Crie um banco de dados no seu MySQL. Em seguida, atualize o arquivo `settings.py` com as credenciais de acesso:
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nome_do_seu_banco',
+        'USER': 'seu_usuario',
+        'PASSWORD': 'sua_senha',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+> **Nota:** O projeto utiliza o driver `PyMySQL`. A injeção de compatibilidade (`pymysql.install_as_MySQLdb()`) já está configurada no `__init__.py` principal da aplicação.
+
+**5. Execute as migrações e crie o administrador**
+```bash
+python manage.py migrate
+python manage.py createsuperuser
+```
+
+**6. Inicie o servidor**
+```bash
+python manage.py runserver
+```
+O sistema estará disponível no navegador através do endereço: `http://127.0.0.1:8000`
 
 ---
 
-### 1️⃣ Clonar o Repositório
+## 📂 Estrutura do Projeto
 
-```bash
-git clone https://github.com/seu-usuario/epi-manager.git
-cd epi-manager
+A arquitetura do projeto segue o padrão modular do Django, separando regras de negócio, interface e arquivos estáticos:
+
+```text
+epi_manager/
+├── core/                  # Configurações centrais do Django (settings.py, urls.py)
+├── apps/                  # Aplicações do sistema (EPIs, Colaboradores, Entregas)
+│   ├── models.py          # Regras de negócio e estrutura das tabelas
+│   ├── views.py           # Lógica de processamento e controle de requisições
+│   └── forms.py           # Validação de dados
+├── templates/             # Arquivos HTML da interface (Dashboard, Modais, Base)
+├── static/                # Arquivos estáticos (CSS customizado, JS, Chart.js)
+├── media/                 # Uploads dinâmicos (ex: fotos de perfil dos colaboradores)
+├── requirements.txt       # Lista de dependências do Python
+└── manage.py              # Utilitário de linha de comando do Django
+```
+
+---
+
+## 🔗 Rotas Principais (Endpoints)
+
+O sistema possui mapeamento de rotas focado na gestão e emissão de relatórios:
+
+* `/dashboard/` - Painel principal com gráficos de BI e alertas de vencimentos (CA e ASO).
+* `/epis/` - CRUD de equipamentos e controle de estoque técnico.
+* `/colaboradores/` - Gestão de funcionários, perfis de acesso e histórico de saúde.
+* `/entregas/` - Registro de movimentações e fluxo de baixas inteligentes (Devolvido, Descartado, Extraviado).
+* `/ficha-epi/<id_colaborador>/pdf/` - Geração sob demanda da Ficha NR-6 em formato PDF.
+
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Pfeiffer**
+
+* **LinkedIn:** [Adicione seu LinkedIn aqui](https://linkedin.com/in/seu-perfil)
+* **GitHub:** [Adicione seu GitHub aqui](https://github.com/seu-usuario)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
