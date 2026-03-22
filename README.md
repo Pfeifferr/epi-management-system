@@ -76,3 +76,13 @@ O sistema foi desenvolvido utilizando as tecnologias mais recentes do ecossistem
     * `pypdf` & `pyHanko`: Manipulação avançada e segurança de documentos.
     * `Pillow`: Processamento de fotos de perfil e otimização de imagens.
 * **Comunicação:** `Requests` e `urllib3` para integrações externas.
+## 🚀 Como Executar o Projeto
+
+Siga os passos abaixo para rodar o **EPI Manager** em sua máquina local:
+
+### 1. Clonar o Repositório
+```bash
+git clone [https://github.com/seu-usuario/epi-manager.git](https://github.com/seu-usuario/epi-manager.git)
+cd epi-manager
+
+### 2. Configurar o Ambiente Virtual
