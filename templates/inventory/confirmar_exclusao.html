@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{# Título exibido na aba do navegador #}
+{% block title %}Excluir EPI — EPI Manager{% endblock %}
+
+{# Título exibido no header da página #}
+{% block page_title %}Excluir EPI{% endblock %}
+
+{% block content %}
+
+{# Container principal da página de exclusão #}
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        {# Coluna centralizada para manter o foco na confirmação #}
+        <div class="col-md-6">
+
+            <div class="card border-danger shadow-sm">
+
+                {# Cabeçalho de alerta #}
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                        Atenção
+                    </h4>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <h5 class="card-title">
+                        Você está prestes a excluir este EPI:
+                    </h5>
+
+                    {# Nome do EPI destacado visualmente #}
+                    <p class="fs-5 fw-bold text-dark bg-light p-2 rounded text-center border">
+                        {{ epi.nome }}
+                    </p>
+
+                    <p class="text-muted mt-4">
+                        Esta ação não pode ser desfeita. Para confirmar a exclusão,
+                        digite o nome exato do equipamento abaixo:
+                    </p>
+
+                    {# Formulário de confirmação da exclusão #}
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="mb-4">
+
+                            <input
+                                type="text"
+                                name="confirmacao_nome"
+                                class="form-control border-danger"
+                                id="inputConfirm"
+                                placeholder="Digite '{{ epi.nome }}'"
+                                required
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+                        {# Botões de ação #}
+                        <div class="d-flex justify-content-between">
+
+                            <a href="{% url 'lista_epis' %}" class="btn btn-light">
+                                Cancelar
+                            </a>
+
+                            <button
+                                type="submit"
+                                id="btnDelete"
+                                class="btn btn-danger fw-bold"
+                                disabled
+                            >
+                                Tenho certeza, excluir EPI
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{# Script responsável por liberar o botão apenas se o nome digitado for idêntico #}
+{% block extra_js %}
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const input = document.getElementById('inputConfirm');
+    const btn = document.getElementById('btnDelete');
+
+    {# escapejs evita erro caso o nome tenha aspas ou caracteres especiais #}
+    const nomeEpi = "{{ epi.nome|escapejs }}";
+
+    input.addEventListener('input', function() {
+
+        if (input.value === nomeEpi) {
+            btn.disabled = false;
+        } else {
+            btn.disabled = true;
+        }
+
+    });
+
+});
+
+</script>
+
+{% endblock %}

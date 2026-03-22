@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# Título da aba do navegador #}
+{% block title %}Controle de Estoque — EPI Manager{% endblock %}
+
+{# CSS específico da página de estoque #}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+   CONTAINER PRINCIPAL
+========================= -->
+<div class="container-fluid py-4">
+
+
+    <!-- =========================
+       ALERTAS / MENSAGENS DJANGO
+    ========================= -->
+    {% if messages %}
+        {% for message in messages %}
+
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+
+
+    <!-- =========================
+       CARD PRINCIPAL DO ESTOQUE
+    ========================= -->
+    <div class="inventory-container shadow-sm">
+
+
+        {# HEADER DA TABELA #}
+        <div class="table-header d-flex flex-wrap justify-content-between align-items-center mb-4">
+
+            <h2 class="m-0">
+                <i class="bi bi-box-seam me-2 text-primary"></i>
+                Controle de Estoque
+            </h2>
+
+
+            {# BUSCA + BOTÃO NOVO EPI #}
+            <div class="d-flex gap-2">
+
+                {# FORMULÁRIO DE BUSCA #}
+                <form method="GET" class="d-flex">
+
+                    <div class="input-group">
+
+                        <input
+                            type="text"
+                            name="search"
+                            class="form-control"
+                            placeholder="Buscar EPI..."
+                            value="{{ request.GET.search|default:'' }}"
+                        >
+
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                {# BOTÃO CRIAR EPI #}
+                <a href="{% url 'criar_epi' %}" class="btn btn-success">
+                    <i class="bi bi-plus-lg"></i> Novo EPI
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+           TABELA DE EPIs
+        ========================= -->
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th width="10%">C.A.</th>
+                        <th width="35%">Equipamento</th>
+                        <th width="20%">Estoque Atual</th>
+                        <th width="20%">Validade C.A.</th>
+                        <th width="15%" class="text-center">Ações</th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    {% for epi in epis %}
+
+                    <tr>
+
+                        {# CA DO EPI #}
+                        <td>
+                            <span class="badge bg-light text-dark border">
+                                {{ epi.ca_numero|default:"N/A" }}
+                            </span>
+                        </td>
+
+
+                        {# NOME + CÓDIGO #}
+                        <td>
+                            <span class="fw-bold text-dark">
+                                {{ epi.nome }}
+                            </span>
+
+                            <br>
+
+                            <small class="text-muted">
+                                Cód: {{ epi.codigo }}
+                            </small>
+                        </td>
+
+
+                        {# STATUS DE ESTOQUE #}
+                        <td>
+
+                            {% if epi.estoque <= 5 %}
+
+                                <span class="status-badge badge-low">
+                                    <i class="bi bi-exclamation-triangle-fill"></i>
+                                    {{ epi.estoque }} un.
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge badge-ok">
+                                    <i class="bi bi-check-circle-fill"></i>
+                                    {{ epi.estoque }} un.
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        {# VALIDADE DO CA #}
+                        <td>
+
+                            {% if epi.ca_validade %}
+
+                                {% if epi.ca_validade < hoje %}
+
+                                    <span class="text-danger fw-bold">
+                                        <i class="bi bi-calendar-x"></i>
+                                        {{ epi.ca_validade|date:"d/m/Y" }}
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="text-muted">
+                                        <i class="bi bi-calendar-check"></i>
+                                        {{ epi.ca_validade|date:"d/m/Y" }}
+                                    </span>
+
+                                {% endif %}
+
+                            {% else %}
+
+                                <span class="text-muted">
+                                    Sem C.A.
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        {# BOTÕES DE AÇÃO #}
+                        <td class="text-center">
+
+                            <div class="btn-group">
+
+                                <a href="{% url 'editar_epi' epi.pk %}"
+                                   class="btn btn-sm btn-outline-primary"
+                                   title="Editar">
+
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                                <a href="{% url 'excluir_epi' epi.pk %}"
+                                   class="btn btn-sm btn-outline-danger"
+                                   title="Excluir">
+
+                                    <i class="bi bi-trash"></i>
+                                </a>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="5" class="text-center py-5">
+
+                            <i class="bi bi-search text-muted"
+                               style="font-size: 3rem;">
+                            </i>
+
+                            <p class="text-muted mt-2">
+                                Nenhum EPI encontrado.
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

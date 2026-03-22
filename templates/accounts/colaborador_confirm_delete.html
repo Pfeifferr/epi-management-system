@@ -1,0 +1,51 @@
+{# Herda a estrutura principal da interface a partir do template base.html #}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            {# Cartão de confirmação estilizado com borda semântica (danger) para destacar a criticidade da ação para o usuário #}
+            <div class="card shadow-sm border-danger">
+                <div class="card-body text-center p-5">
+                    
+                    <h2 class="text-danger mb-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i> Confirmar Exclusão
+                    </h2>
+                    
+                    <p class="fs-5 text-dark">
+                        Você está prestes a remover o registro do colaborador: <br>
+                        <span class="badge bg-light text-dark fs-6 mt-2">
+                            {# Interpolação dos atributos do objeto 'colaborador' passado pelo contexto da view (geralmente uma DeleteView do Django) #}
+                            <strong>{{ colaborador.first_name }} {{ colaborador.last_name }}</strong>
+                        </span>
+                    </p>
+                    
+                    <div class="alert alert-warning mt-3 border-0">
+                        <small class="text-dark fw-bold">
+                            Atenção: Esta ação é irreversível e removerá todos os vínculos associados a este perfil.
+                        </small>
+                    </div>
+                    
+                    {# Formulário configurado para POST, método HTTP obrigatório para efetivar exclusões (Delete) no banco de dados #}
+                    <form method="POST" class="mt-4">
+                        {# Token de segurança nativo do Django para evitar ataques de Cross-Site Request Forgery (CSRF) #}
+                        {% csrf_token %}
+                        
+                        {# Rota de escape (fallback) utilizando a tag 'url' para redirecionar à listagem caso a ação seja cancelada #}
+                        <a href="{% url 'listar_colaboradores' %}" class="btn btn-outline-secondary px-4 me-2">
+                            Cancelar e Voltar
+                        </a>
+                        
+                        {# Botão de submissão (submit) que aciona a requisição POST para finalizar a remoção #}
+                        <button type="submit" class="btn btn-danger px-4">
+                            Sim, Confirmar Exclusão
+                        </button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

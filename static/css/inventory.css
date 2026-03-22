@@ -1,0 +1,57 @@
+/* ==========================================================================
+   INVENTORY & DATA TABLES
+   Componentes para exibição de listagens e controle de estoque.
+   ========================================================================== */
+
+/* Container Principal de Dados */
+.inventory-container {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+/* Customização de Cabeçalho de Tabela */
+.table thead th {
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 2px solid #dee2e6;
+    padding: 12px;
+}
+
+/* --- SISTEMA DE BADGES (STATUS INDICATORS) --- */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+/* Indicador de Conformidade / Estoque Positivo */
+.badge-ok {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+/* Indicador de Atenção / Estoque Crítico */
+.badge-low {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* --- COMPONENTES DE AÇÃO E INPUT --- */
+
+/* Ajuste de densidade para botões de ação em listas */
+.btn-group .btn {
+    padding: 0.25rem 0.6rem;
+}
+
+/* Estilização de foco para campos de formulário */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1);
+}

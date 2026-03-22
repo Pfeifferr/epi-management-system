@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recibo de Entrega de EPI</title>
+
+    <style>
+
+        /* =========================
+           CONFIGURAÇÃO DA PÁGINA
+        ========================= */
+
+        @page {
+            size: A4 portrait;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14pt;
+            color: #333;
+        }
+
+
+        /* =========================
+           TÍTULO
+        ========================= */
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+            font-size: 18pt;
+        }
+
+
+        /* =========================
+           BLOCO DE INFORMAÇÕES
+        ========================= */
+
+        .info {
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           BLOCO DE ASSINATURA
+        ========================= */
+
+        .assinatura {
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .linha {
+            border-top: 1px solid #000;
+            width: 60%;
+            margin: 0 auto;
+            margin-bottom: 5px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+       TÍTULO DO DOCUMENTO
+    ========================= -->
+    <h1>RECIBO DE ENTREGA DE EPI</h1>
+
+
+    <!-- =========================
+       TEXTO DECLARATÓRIO
+    ========================= -->
+    <div class="info">
+
+        <p>
+            Eu,
+            <strong>{{ entrega.colaborador.get_full_name }}</strong>,
+            portador(a) do CPF nº
+            <strong>{{ entrega.colaborador.cpf }}</strong>,
+        </p>
+
+        <p>
+            declaro ter recebido da empresa o seguinte
+            Equipamento de Proteção Individual (EPI):
+        </p>
+
+
+        {# LISTA DE INFORMAÇÕES DO EPI #}
+        <ul>
+
+            <li>
+                <strong>Equipamento:</strong>
+                {{ entrega.epi.nome }}
+            </li>
+
+            <li>
+                <strong>CA:</strong>
+                {% if entrega.epi.ca_numero %}
+                    {{ entrega.epi.ca_numero }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </li>
+
+            <li>
+                <strong>Quantidade:</strong>
+                {{ entrega.quantidade }}
+            </li>
+
+        </ul>
+
+
+        <p>
+            Declaro estar ciente de que devo utilizar o equipamento
+            apenas para a finalidade a que se destina, responsabilizando-me
+            por sua guarda e conservação, e comprometendo-me a devolvê-lo
+            quando solicitado.
+        </p>
+
+
+        <p>
+            <strong>Data da Retirada:</strong>
+            {{ entrega.data_entrega|date:"d/m/Y" }}
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+       ASSINATURA DO COLABORADOR
+    ========================= -->
+    <div class="assinatura">
+
+        <div class="linha"></div>
+
+        Assinatura do Colaborador
+
+        <br>
+
+        {{ entrega.colaborador.get_full_name }}
+
+    </div>
+
+</body>
+
+</html>

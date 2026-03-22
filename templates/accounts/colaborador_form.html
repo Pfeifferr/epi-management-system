@@ -1,0 +1,44 @@
+{# Herda o layout base e carrega tags de arquivos estáticos #}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            {# Renderiza dinamicamente a ação (ex: 'Criar', 'Editar') passada pelo contexto da view #}
+            <h3 class="mb-0">{{ acao }} Colaborador</h3>
+        </div>
+        <div class="card-body">
+            {# Formulário configurado para método POST e habilitado para upload de arquivos (multipart/form-data) #}
+            <form method="POST" enctype="multipart/form-data">
+                {# Token de proteção contra falsificação de requisições entre sites (Cross-Site Request Forgery) #}
+                {% csrf_token %}
+                
+                <div class="row">
+                    {# Iteração dinâmica sobre os campos instanciados no Django Form #}
+                    {% for field in form %}
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">{{ field.label }}</label>
+                        
+                        {# Renderiza o widget HTML correspondente ao campo do formulário #}
+                        {{ field }}
+                        
+                        {# Bloco de tratamento de erros de validação específicos do campo #}
+                        {% if field.errors %}
+                            <div class="text-danger small">{{ field.errors|striptags }}</div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="mt-4">
+                    {# Ações de controle do formulário #}
+                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <a href="{% url 'listar_colaboradores' %}" class="btn btn-secondary ms-2">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

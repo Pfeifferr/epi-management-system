@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+
+{# Título da aba do navegador #}
+{% block title %}Movimentação de EPIs — EPI Manager{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+   CONTAINER PRINCIPAL
+========================= -->
+<div class="container-fluid mt-4">
+
+    {# Header da página #}
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📦 Movimentação de EPIs</h2>
+
+        <a href="{% url 'registrar_entrega' %}" class="btn btn-primary">
+            + Nova Entrega
+        </a>
+    </div>
+
+    <!-- =========================
+       TABELA DE MOVIMENTAÇÕES
+    ========================= -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+
+            <table class="table table-hover align-middle mb-0">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Colaborador</th>
+                        <th>EPI</th>
+                        <th>Qtd</th>
+                        <th>Data Entrega</th>
+                        <th>Status</th>
+                        <th class="text-end">Ação</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for entrega in entregas %}
+
+                    <tr>
+
+                        <td>
+                            {{ entrega.colaborador.get_full_name }}
+                        </td>
+
+                        <td>
+                            {{ entrega.epi.nome }}
+                        </td>
+
+                        <td>
+                            {{ entrega.quantidade }}
+                        </td>
+
+                        <td>
+                            {{ entrega.data_entrega|date:"d/m/Y H:i" }}
+                        </td>
+
+                        <td>
+                            <span class="badge
+                                {% if entrega.status == 'EM_USO' %}
+                                    bg-warning text-dark
+                                {% else %}
+                                    bg-success
+                                {% endif %}
+                            ">
+                                {{ entrega.get_status_display }}
+                            </span>
+                        </td>
+
+                        {# AÇÕES DA ENTREGA #}
+                        <td class="text-end">
+
+                            <a href="{% url 'gerar_recibo_pdf' entrega.pk %}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-secondary"
+                               title="Imprimir Recibo da Entrega">
+
+                                📄 Recibo
+                            </a>
+
+                            <a href="{% url 'gerar_ficha_nr6_pdf' entrega.colaborador.pk %}"
+                               target="_blank"
+                               class="btn btn-sm btn-outline-primary"
+                               title="Imprimir Ficha NR-6 Completa">
+
+                                📋 Ficha
+                            </a>
+
+                            {% if entrega.status == 'EM_USO' %}
+
+                            <button type="button"
+                                    class="btn btn-sm btn-outline-success ms-1"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalBaixa"
+                                    onclick="abrirModalBaixa('{{ entrega.pk }}', '{{ entrega.epi.nome|escapejs }}')">
+
+                                <i class="bi bi-arrow-return-left"></i>
+                                Dar Baixa
+                            </button>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="6" class="text-center py-4">
+                            Nenhuma entrega registrada.
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- =========================
+   MODAL DE BAIXA DO EPI
+========================= -->
+
+<div class="modal fade" id="modalBaixa" tabindex="-1" aria-labelledby="modalBaixaLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content shadow">
+
+      <div class="modal-header bg-light">
+
+        <h5 class="modal-title fw-bold" id="modalBaixaLabel">
+            Registrar Baixa de EPI
+        </h5>
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close">
+        </button>
+
+      </div>
+
+      <form id="formBaixa" method="POST" action="">
+        {% csrf_token %}
+
+        <div class="modal-body text-start">
+
+          <p class="mb-3">
+            Selecione o destino do EPI:
+            <strong id="nomeEpiModal" class="text-primary"></strong>
+          </p>
+
+          {# DEVOLVIDO #}
+          <div class="form-check mb-3 p-3 border rounded bg-light">
+
+            <input class="form-check-input ms-1 mt-2"
+                   type="radio"
+                   name="novo_status"
+                   id="optDevolvido"
+                   value="DEVOLVIDO"
+                   checked>
+
+            <label class="form-check-label ms-2 fw-bold text-success w-100"
+                   style="cursor: pointer;"
+                   for="optDevolvido">
+
+              <i class="bi bi-box-arrow-in-down"></i>
+              Devolvido
+
+              <small class="d-block text-muted fw-normal mt-1">
+                O EPI está em boas condições e vai
+                <strong>voltar para o estoque</strong>.
+              </small>
+
+            </label>
+
+          </div>
+
+
+          {# DESCARTADO #}
+          <div class="form-check mb-3 p-3 border rounded bg-light">
+
+            <input class="form-check-input ms-1 mt-2"
+                   type="radio"
+                   name="novo_status"
+                   id="optDescartado"
+                   value="DESCARTADO">
+
+            <label class="form-check-label ms-2 fw-bold text-warning w-100"
+                   style="cursor: pointer;"
+                   for="optDescartado">
+
+              <i class="bi bi-trash"></i>
+              Descartado / Danificado
+
+              <small class="d-block text-muted fw-normal mt-1">
+                O EPI estragou e foi para o lixo
+                <strong>(Não volta pro estoque)</strong>.
+              </small>
+
+            </label>
+
+          </div>
+
+
+          {# PERDIDO #}
+          <div class="form-check p-3 border rounded bg-light">
+
+            <input class="form-check-input ms-1 mt-2"
+                   type="radio"
+                   name="novo_status"
+                   id="optPerdido"
+                   value="PERDIDO">
+
+            <label class="form-check-label ms-2 fw-bold text-danger w-100"
+                   style="cursor: pointer;"
+                   for="optPerdido">
+
+              <i class="bi bi-question-circle"></i>
+              Perdido / Extraviado
+
+              <small class="d-block text-muted fw-normal mt-1">
+                O funcionário perdeu o equipamento
+                <strong>(Não volta pro estoque)</strong>.
+              </small>
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <div class="modal-footer bg-light">
+
+          <button type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal">
+
+              Cancelar
+          </button>
+
+          <button type="submit"
+                  class="btn btn-primary fw-bold shadow-sm">
+
+              Confirmar Baixa
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- =========================
+   SCRIPT DO MODAL
+========================= -->
+
+<script>
+
+function abrirModalBaixa(idEntrega, nomeEpi) {
+
+    // Mostra o nome do EPI no modal
+    document.getElementById('nomeEpiModal').textContent = nomeEpi;
+
+    // Define a URL correta do formulário
+    var urlBase = "{% url 'registrar_devolucao' 0 %}".replace('0', idEntrega);
+
+    document.getElementById('formBaixa').action = urlBase;
+
+}
+
+</script>
+
+{% endblock %}

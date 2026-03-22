@@ -1,0 +1,317 @@
+{% extends "base.html" %}
+{% load static %}
+
+{# CSS específico do dashboard #}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}Dashboard — EPI Manager{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+
+    <div class="mb-4">
+        <h2 class="m-0"><i class="bi bi-speedometer2 text-primary me-2"></i>Dashboard</h2>
+    </div>
+
+    {% if is_colaborador %}
+        <div class="row mb-4">
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3 border-start border-warning border-4">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">EPIs sob minha responsabilidade</h6>
+                        <div class="fs-2 fw-bold text-dark">{{ meus_epis_ativos|default:0 }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3 border-start border-primary border-4">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">Total de Retiradas (Histórico)</h6>
+                        <div class="fs-2 fw-bold text-dark">{{ historico_total|default:0 }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+
+        {# ALERTA: colaboradores com ASO vencido #}
+        {% if aso_vencidos %}
+        <div class="alert alert-danger shadow-sm border-0 rounded-3 mb-4 d-flex align-items-center">
+            <i class="bi bi-exclamation-triangle-fill fs-1 me-3 text-danger"></i>
+            <div>
+                <h5 class="alert-heading fw-bold text-danger mb-1">ALERTA NR-7: Exames Médicos Vencidos!</h5>
+                <p class="mb-1 text-dark">A entrega de EPIs está bloqueada para:</p>
+
+                <ul class="mb-0 text-dark">
+                    {% for colaborador in aso_vencidos %}
+                        <li>
+                            <strong>{{ colaborador.first_name }} {{ colaborador.last_name }}</strong>
+                            (Venceu em {{ colaborador.data_vencimento_aso|date:"d/m/Y" }})
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    
+        {# ALERTA: EPIs com CA Vencido #}
+        {% if cas_vencidos_list %}
+        <div class="alert alert-dark shadow-sm border-0 rounded-3 mb-4 d-flex align-items-center" style="background-color: #1a1a1a; color: white;">
+            <i class="bi bi-shield-slash-fill fs-1 me-3 text-danger"></i>
+            <div>
+                <h5 class="alert-heading fw-bold text-danger mb-1">BLOQUEIO NR-6: Certificado de Aprovação (CA) Vencido!</h5>
+                <p class="mb-1 text-light">Os seguintes itens no inventário estão com a validade jurídica expirada:</p>
+                
+                <ul class="mb-0 text-light">
+                    {% for epi in cas_vencidos_list %}
+                    <li>
+                        <strong>{{ epi.nome }}</strong> (CA: {{ epi.ca_numero }}) - Venceu em {{ epi.ca_validade|date:"d/m/Y" }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+        
+        {# ALERTA: EPIs vencendo vida útil #}
+        {% if epis_vencendo_vida_util %}
+        <div class="alert alert-warning shadow-sm border-0 rounded-3 mb-4 d-flex align-items-center">
+            <i class="bi bi-clock-history fs-1 me-3 text-warning"></i>
+
+            <div>
+                <h5 class="alert-heading fw-bold text-dark mb-1">
+                    ALERTA DE TROCA: Vida Útil de EPIs Atingida
+                </h5>
+
+                <p class="mb-1 text-dark">
+                    Os seguintes equipamentos precisam ser substituídos:
+                </p>
+
+                <div class="table-responsive mt-2">
+                    <table class="table table-sm table-warning mb-0 border-warning">
+
+                        <thead>
+                            <tr>
+                                <th>Colaborador</th>
+                                <th>EPI</th>
+                                <th>Entregue em</th>
+                                <th>Venceu em</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for item in epis_vencendo_vida_util %}
+                            <tr>
+                                <td><strong>{{ item.colaborador }}</strong></td>
+                                <td>{{ item.epi }}</td>
+                                <td>{{ item.data_entrega|date:"d/m/Y" }}</td>
+                                <td class="text-danger fw-bold">{{ item.data_vencimento|date:"d/m/Y" }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {# CARDS PRINCIPAIS #}
+        <div class="row mb-4">
+
+            <div class="col-xl-3 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">
+                            Pendências de Devolução
+                        </h6>
+                        <div class="fs-2 fw-bold text-warning">
+                            {{ pendencias_count|default:0 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">
+                            Empréstimos Hoje
+                        </h6>
+                        <div class="fs-2 fw-bold text-success">
+                            {{ emprestimos_hoje|default:0 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">
+                            CA(s) Vencidos
+                        </h6>
+
+                        <div class="fs-2 fw-bold {% if cas_vencidos > 0 %}text-danger{% else %}text-secondary{% endif %}">
+                            {{ cas_vencidos|default:0 }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            {# BUSCA RÁPIDA #}
+            <div class="col-xl-3 col-md-6 mb-3">
+                <div class="card h-100 shadow-sm border-0 rounded-3">
+
+                    <div class="card-body">
+
+                        <h6 class="text-muted text-uppercase fw-bold mb-3">
+                            Busca Rápida
+                        </h6>
+
+                        <form method="get" action="{% url 'busca_geral' %}">
+                            <div class="input-group">
+
+                                <input
+                                    type="text"
+                                    name="q"
+                                    placeholder="Colaborador ou EPI..."
+                                    class="form-control bg-light border-0"
+                                >
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-search"></i>
+                                </button>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        {# GRÁFICOS #}
+        <div class="row mb-4">
+
+            <div class="col-lg-4 mb-3">
+                <div class="chart-card h-100 shadow-sm border-0 rounded-3 bg-white p-3">
+
+                    <h5 class="text-center fw-bold mb-4">Status das Entregas</h5>
+
+                    <div class="chart-container">
+                        <canvas id="chartStatus"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="chart-card h-100 shadow-sm border-0 rounded-3 bg-white p-3">
+
+                    <h5 class="text-center fw-bold mb-4">Top 5 EPIs</h5>
+
+                    <div class="chart-container">
+                        <canvas id="chartTopEpis"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="chart-card h-100 shadow-sm border-0 rounded-3 bg-white p-3">
+
+                    <h5 class="text-center fw-bold mb-4">Entregas (7 Dias)</h5>
+
+                    <div class="chart-container">
+                        <canvas id="chartEntregas"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    {% endif %}
+
+    {# ATIVIDADE RECENTE #}
+    <div class="recent-activity card shadow-sm border-0 rounded-3 p-4">
+
+        <h5 class="fw-bold mb-3">
+            <i class="bi bi-clock-history me-2 text-primary"></i>
+
+            {% if is_colaborador %}
+                Meu Histórico
+            {% else %}
+                Atividade Recente
+            {% endif %}
+        </h5>
+
+        <div class="activity-list">
+
+            {% for atividade in atividades_recentes %}
+
+            <div class="activity-item py-2 border-bottom d-flex justify-content-between align-items-center">
+
+                <div>
+                    <strong class="text-dark">
+                        {{ atividade.colaborador.first_name }}
+                    </strong>
+
+                    <span class="text-muted small">
+                        | {{ atividade.epi.nome }}
+                    </span>
+
+                    <br>
+
+                    <small class="text-muted">
+                        {{ atividade.data_entrega|date:"d/m/Y H:i" }}
+                    </small>
+                </div>
+
+                <span class="badge {% if atividade.status == 'EM_USO' %}bg-warning text-dark{% else %}bg-success{% endif %}">
+                    {{ atividade.get_status_display }}
+                </span>
+
+            </div>
+
+            {% empty %}
+            <p class="text-center text-muted p-4">
+                Nenhum registro encontrado.
+            </p>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
+
+
+{# JS específico do dashboard #}
+{% block extra_js %}
+
+{% if not is_colaborador %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{# Dados vindos do Django para o JavaScript #}
+<script>
+const graficoStatusDados = {{ grafico_status_dados|safe }};
+const topEpisNomes = {{ top_epis_nomes|safe }};
+const topEpisQtds = {{ top_epis_qtds|safe }};
+const diasLabels = {{ dias_labels|safe }};
+const entregasPorDia = {{ entregas_por_dia|safe }};
+</script>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{# Título exibido na aba do navegador #}
+{% block title %}Registrar Entrega — EPI Manager{% endblock %}
+
+{# Título exibido no header da página #}
+{% block page_title %}Registrar Entrega de EPI{% endblock %}
+
+{% block content %}
+
+{# Container principal da página de registro de entrega #}
+<div class="container mt-4">
+
+    {# Card centralizado contendo o formulário #}
+    <div class="card shadow-sm col-md-8 mx-auto">
+
+        <div class="card-header bg-white">
+            <h3 class="mb-0">Registrar Entrega de EPI</h3>
+        </div>
+
+        <div class="card-body">
+
+            {# Formulário de registro da entrega #}
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {# Exibição de erros do formulário #}
+                {% if form.errors %}
+                    <div class="alert alert-danger pb-0">
+
+                        <ul class="mb-2">
+
+                            {# Erros por campo #}
+                            {% for field in form %}
+                                {% for error in field.errors %}
+                                    <li>
+                                        <strong>{{ field.label }}:</strong>
+                                        {{ error }}
+                                    </li>
+                                {% endfor %}
+                            {% endfor %}
+
+                            {# Erros gerais do formulário #}
+                            {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+
+                        </ul>
+
+                    </div>
+                {% endif %}
+
+                {# Campo: Colaborador #}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Colaborador</label>
+                    {{ form.colaborador }}
+                </div>
+
+                {# Campo: EPI #}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">EPI</label>
+                    {{ form.epi }}
+                </div>
+
+                {# Campo: Quantidade #}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Quantidade</label>
+                    {{ form.quantidade }}
+                </div>
+
+                {# Campo: Observação #}
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Observações</label>
+                    {{ form.observacao }}
+                </div>
+
+                {# Botões de ação do formulário #}
+                <div class="mt-4">
+
+                    <button type="submit" class="btn btn-success">
+                        Confirmar Entrega
+                    </button>
+
+                    <a href="{% url 'lista_entregas' %}" class="btn btn-secondary ms-2">
+                        Cancelar
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
