@@ -27,29 +27,43 @@ O projeto foi construído com uma stack moderna, focada em estabilidade e escala
 
 O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma organização:
 
-* **🔐 Sistema de Autenticação com Hierarquia:**
-    * **Administrador/Gestor:** Acesso total ao sistema, gestão de usuários, inventário e relatórios.
-    * **Operador de Estoque:** Permissão para realizar entregas e baixas, sem acesso às configurações sensíveis.
-    * **Colaborador:** Acesso restrito para consulta de sua própria ficha de EPIs recebidos.
-* **📊 Dashboard de Indicadores:** Visualização clara e em tempo real do status do estoque, EPIs mais retirados e alertas críticos.
-* **👥 Gestão de Colaboradores:** Cadastro detalhado de funcionários, permitindo vincular fotos e organizar por setores/cargos.
-* **📦 Controle de Inventário:** Gerenciamento de Equipamentos com registro de CA (Certificado de Aprovação), fabricante e data de validade.
-* **📑 Registro de Movimentações:** Histórico completo de entregas e devoluções, garantindo a rastreabilidade de cada item.
-* **📄 Emissão de Documentos:** Geração automática da ficha de entrega de EPI em conformidade com a NR-6 (Pronto para impressão).
+* **🔐 Sistema de Autenticação com Hierarquia (RBAC):**
+    * **Administrador/SST:** Acesso total, gestão de usuários, inventário e relatórios analíticos.
+    * **Almoxarife:** Foco operacional em entregas e baixas de estoque.
+    * **Colaborador:** Interface restrita para consulta de sua própria ficha e histórico.
+* **📊 Dashboard de Indicadores:** Visualização clara do status do estoque e alertas críticos de validade.
+* **👥 Gestão de Colaboradores:** Cadastro detalhado com foto, setor e controle de vencimento de ASO (NR-7).
+* **📦 Controle de Inventário:** Gestão de CA (Certificado de Aprovação), fabricante e parâmetros de vida útil.
+* **📑 Registro de Movimentações:** Histórico completo de custódia, garantindo a rastreabilidade total.
+* **📄 Emissão de Documentos:** Geração automática da ficha de EPI em PDF conforme a NR-6.
 
 ## 📸 Demonstração do Sistema
 
-| 🔐 Portal de Acesso | 📊 Dashboard de Indicadores |
+Abaixo, os diferentes níveis de acesso e funcionalidades principais:
+
+| 🔐 Portal de Acesso (Login) | 📊 Dashboard (Visão Admin) |
 | :---: | :---: |
 | ![Login](LINK_DA_IMAGEM_LOGIN) | ![Dashboard](LINK_DA_IMAGEM_DASHBOARD) |
-| *Sistema de autenticação com níveis de permissão.* | *Visão geral de estoque e alertas críticos.* |
+| *Autenticação segura e direcionamento por perfil.* | *Gráficos de estoque e alertas de conformidade.* |
 
-| 📦 Gestão de Inventário (EPIs) | 👥 Cadastro de Colaboradores |
+| 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
 | :---: | :---: |
 | ![Inventário](LINK_DA_IMAGEM_INVENTARIO) | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
-| *Controle de CA, Fabricante e Validades.* | *Gestão de perfis com foto e setor.* |
+| *Controle de CA, Estoque e Validades.* | *Perfis com foto e monitoramento de ASO.* |
 
-| 📑 Geração de Ficha NR-6 (PDF) |
+| 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
+| :---: | :---: |
+| ![Entrega](LINK_DA_IMAGEM_ENTREGA) | ![Colaborador](LINK_DA_IMAGEM_COLABORADOR) |
+| *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
+
+| 📄 Geração de Ficha NR-6 (PDF) |
 | :---: |
 | ![Ficha PDF](LINK_DA_IMAGEM_PDF) |
-| *Documento gerado automaticamente para conformidade legal.* |
+| *Documento gerado automaticamente para assinatura.* |
+
+## 🛠️ Como Rodar o Projeto
+
+### 1. Clonar o Repositório
+```bash
+git clone [https://github.com/Pfeifferr/epi-management-system.git](https://github.com/Pfeifferr/epi-management-system.git)
+cd epi-management-system
