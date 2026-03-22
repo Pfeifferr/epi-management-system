@@ -92,13 +92,19 @@ def dashboard(request):
         qtd = Entrega.objects.filter(data_entrega__range=(inicio_alvo, fim_alvo)).count()
         entregas_por_dia.append(qtd)
 
+<<<<<<< HEAD
     cas_vencidos_list = Epi.objects.filter(ca_validade__lt=hoje_local, ativo=True)
 
+=======
+>>>>>>> 72c65a8d901841a7d0a79f894012077a410c906a
     context = {
         'pendencias_count': pendencias_count,
         'emprestimos_hoje': emprestimos_hoje,
         'cas_vencidos': cas_vencidos,
+<<<<<<< HEAD
         'cas_vencidos_list': cas_vencidos_list,
+=======
+>>>>>>> 72c65a8d901841a7d0a79f894012077a410c906a
         'aso_vencidos': aso_vencidos, 
         'epis_vencendo_vida_util': epis_vencendo_vida_util,
         'atividades_recentes': atividades_recentes,
