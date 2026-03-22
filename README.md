@@ -65,24 +65,36 @@ Abaixo, as interfaces principais e os diferentes níveis de acesso do sistema:
 
 ## 🛠️ Stack Tecnológica
 
-O sistema foi desenvolvido utilizando as tecnologias mais recentes do ecossistema Python/Django para garantir performance e segurança:
+O sistema foi desenvolvido utilizando tecnologias modernas do ecossistema Python/Django, priorizando performance, segurança e escalabilidade:
 
-* **Core:** Python 3.12+ | Django 6.0.3
-* **Banco de Dados:** MySQL (via PyMySQL)
-* **Interface:** Bootstrap 5.3 | Font Awesome 6 | Google Fonts
-* **Gráficos e BI:** Chart.js (Integração via JSON dinâmico no Django)
-* **Processamento de Documentos:**
-    * `xhtml2pdf` & `reportlab`: Geração técnica de fichas NR-6.
-    * `pypdf` & `pyHanko`: Manipulação avançada e segurança de documentos.
-    * `Pillow`: Processamento de fotos de perfil e otimização de imagens.
-* **Comunicação:** `Requests` e `urllib3` para integrações externas.
+| Camada | Tecnologia | Finalidade |
+| :--- | :--- | :--- |
+| **Backend** | Python 3.12+ | Lógica de negócio e processamento do sistema |
+| **Framework** | Django 6.0.3 | Estrutura MVC, ORM e autenticação |
+| **Banco de Dados** | MySQL + PyMySQL 1.1.2 | Persistência de dados relacional |
+| **Frontend** | HTML5, CSS3, JavaScript | Estrutura e interatividade |
+| **UI/UX** | Bootstrap 5.3 | Interface responsiva |
+| **Ícones & Fontes** | Font Awesome 6, Bootstrap Icons, Google Fonts | Identidade visual |
+| **Gráficos (BI)** | Chart.js | Visualização de dados |
+| **PDF (Geração)** | xhtml2pdf, reportlab | Criação de documentos NR-6 |
+| **PDF (Manipulação)** | pypdf, pyHanko | Segurança e edição |
+| **Imagens** | Pillow | Processamento de imagens |
+
+---
+
 ## 🚀 Como Executar o Projeto
 
-Siga os passos abaixo para rodar o **EPI Manager** em sua máquina local:
+Siga os passos abaixo para rodar o sistema localmente:
 
-### 1. Clonar o Repositório
+### 📌 Pré-requisitos
+
+- Python 3.12 ou superior  
+- MySQL Server em execução  
+
+---
+
+### 1️⃣ Clonar o Repositório
+
 ```bash
-git clone [https://github.com/seu-usuario/epi-manager.git](https://github.com/seu-usuario/epi-manager.git)
+git clone https://github.com/seu-usuario/epi-manager.git
 cd epi-manager
-´´´
-### 2. Configurar o Ambiente Virtual
