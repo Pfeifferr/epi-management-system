@@ -32,7 +32,7 @@ O sistema foi projetado para cobrir todo o ciclo de vida do EPI dentro de uma or
     * **Almoxarife:** Foco operacional em entregas e baixas de estoque.
     * **Colaborador:** Interface restrita para consulta de sua própria ficha e histórico.
 * **📊 Dashboard de Indicadores:** Visualização clara do status do estoque e alertas críticos de validade.
-* **👥 Gestão de Colaboradores:** Cadastro detalhado com foto, setor e controle de vencimento de ASO (NR-7).
+* **👥 Gestão de Colaboradores & Perfis:** Cadastro detalhado de funcionários com **upload de foto de perfil**, organização por setores/cargos e monitoramento de exames médicos (ASO).
 * **📦 Controle de Inventário:** Gestão de CA (Certificado de Aprovação), fabricante e parâmetros de vida útil.
 * **📑 Registro de Movimentações:** Histórico completo de custódia, garantindo a rastreabilidade total.
 * **📄 Emissão de Documentos:** Geração automática da ficha de EPI em PDF conforme a NR-6.
@@ -56,10 +56,10 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 | ![Entrega](LINK_DA_IMAGEM_ENTREGA) | ![Colaborador](LINK_DA_IMAGEM_COLABORADOR) |
 | *Fluxo de baixa e geração de ficha digital.* | *Interface simplificada e bloqueio de menus.* |
 
-| 📄 Geração de Ficha NR-6 (PDF) |
-| :---: |
-| ![Ficha PDF](LINK_DA_IMAGEM_PDF) |
-| *Documento gerado automaticamente para assinatura.* |
+| 📄 Geração de Ficha NR-6 (PDF) | ⚙️ Edição de Perfil e Foto |
+| :---: | :---: |
+| ![Ficha PDF](LINK_DA_IMAGEM_PDF) | ![Edição de Perfil](LINK_DA_IMAGEM_PERFIL) |
+| *Documento gerado automaticamente para assinatura.* | *Área para personalização e upload de foto.* |
 
 ## 🛠️ Como Rodar o Projeto
 
