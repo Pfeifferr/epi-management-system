@@ -2,13 +2,13 @@
 
 **Controle inteligente de Equipamentos de Proteção Individual e Conformidade (NR-6)**
 
-O **EPI Management System** é uma solução completa para automação da segurança do trabalho. Ele substitui as antigas fichas de papel por um fluxo digital auditável, garantindo que a entrega, a substituição e o estoque de EPIs estejam sempre em conformidade com as normas regulamentadoras.
+O **EPI Management System** é uma solução completa que desenvolvi para a automação da segurança do trabalho. O sistema substitui as antigas fichas de papel por um fluxo digital auditável, garantindo que a entrega, a substituição e o estoque de EPIs estejam sempre em conformidade com as normas regulamentadoras.
 
-### 🎯 O Problema que Resolvemos
-* **Fim do Papel:** Digitalização total das fichas de entrega de EPI.
-* **Segurança Jurídica:** Registros precisos com data, hora e assinatura digital/confirmação.
-* **Gestão de Estoque:** Alertas de estoque baixo e controle de validade dos equipamentos.
-* **Transparência:** Dashboard em tempo real para gestores e técnicos de segurança.
+### 🎯 O Problema que Resolvi
+* **Fim do Papel:** Digitalizei totalmente as fichas de entrega de EPI.
+* **Segurança Jurídica:** Criei registros precisos com data, hora e confirmação digital.
+* **Gestão de Estoque:** Implementei alertas de estoque baixo e controle de validade.
+* **Transparência:** Desenvolvi um dashboard em tempo real para controle de gestão.
 
 ## 🚀 Tecnologias Utilizadas
 
