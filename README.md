@@ -50,8 +50,7 @@ Abaixo, os diferentes níveis de acesso e funcionalidades principais:
 
 | 📦 Gestão de EPIs (Inventário) | 👥 Gestão de Colaboradores |
 | :---: | :---: |
-| ![Inventário]![Uploading image.png…]()
- | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
+| ![Inventário](https://github.com/user-attachments/assets/0870c495-fdb0-4bd6-81dc-1445f373691b) | ![Colaboradores](LINK_DA_IMAGEM_COLABORADORES) |
 | *Controle de CA, Estoque e Validades.* | *Perfis com foto e monitoramento de ASO.* |
 
 | 📑 Registro de Entrega (Almoxarife) | 👤 Visão Restrita (Colaborador) |
