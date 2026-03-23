@@ -27,7 +27,7 @@ O projeto foi construído com uma stack moderna, focada em estabilidade e escala
 
 O **EPI Manager** foi projetado para cobrir todo o ciclo de vida do equipamento dentro de uma organização, unindo conformidade legal (NR-6) com automação inteligente:
 
-* **🔐 Sistema de Autenticação com Hierarquia (RBAC): Controle de acesso granular com perfis de Administrador (gestão total), SST/Técnico (gestão operacional e de inventário, com permissão para cadastrar apenas Colaboradores), Almoxarife (foco em movimentações) e Colaborador (interface restrita para consulta de sua própria ficha e histórico).
+* **🔐 Sistema de Autenticação com Hierarquia (RBAC):** Controle de acesso granular com perfis de Administrador (gestão total), SST/Técnico (gestão operacional e de inventário, com permissão para cadastrar apenas Colaboradores), Almoxarife (foco em movimentações) e Colaborador (interface restrita para consulta de sua própria ficha e histórico).
 * **📊 Dashboard de Indicadores (BI):** Visualização em tempo real do status do estoque, pendências de devolução e gráficos analíticos de movimentação semanal e ranking de EPIs.
 * **🚨 Sistema de Alertas Proativo:** Monitoramento inteligente no Dashboard para:
     * **Validade de CA (NR-6):** Alerta visual crítico e bloqueio automático de novas entregas para equipamentos com Certificado de Aprovação vencido.
