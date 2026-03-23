@@ -1,4 +1,4 @@
-# 🛡️ EPI Management System
+# 🛡️ EPI Management System 
 
 **Controle inteligente de Equipamentos de Proteção Individual e Conformidade (NR-6)**
 
