@@ -147,17 +147,15 @@ O sistema estará disponível no navegador através do endereço: `http://127.0.
 A arquitetura do projeto segue o padrão modular do Django, separando regras de negócio, interface e arquivos estáticos:
 
 ```text
-epi_manager/
-├── core/                  # Configurações centrais do Django (settings.py, urls.py)
-├── apps/                  # Aplicações do sistema (EPIs, Colaboradores, Entregas)
-│   ├── models.py          # Regras de negócio e estrutura das tabelas
-│   ├── views.py           # Lógica de processamento e controle de requisições
-│   └── forms.py           # Validação de dados
-├── templates/             # Arquivos HTML da interface (Dashboard, Modais, Base)
-├── static/                # Arquivos estáticos (CSS customizado, JS, Chart.js)
-├── media/                 # Uploads dinâmicos (ex: fotos de perfil dos colaboradores)
-├── requirements.txt       # Lista de dependências do Python
-└── manage.py              # Utilitário de linha de comando do Django
+epi-management-system/
+├── setup/                # Configurações centrais do projeto Django (settings, URLs, WSGI/ASGI)
+├── inventory/            # App responsável pelo controle de EPIs, estoque e movimentações
+├── accounts/             # App de gerenciamento de usuários, colaboradores, autenticação e permissões
+├── templates/            # Templates HTML globais do sistema (base, dashboard, componentes reutilizáveis)
+├── static/               # Arquivos estáticos (CSS, JavaScript, bibliotecas e assets visuais)
+├── media/                # Arquivos enviados pelos usuários (ex: fotos de perfil)
+├── requirements.txt      # Dependências do projeto Python
+└── manage.py             # Interface de linha de comando do Django
 ```
 
 ---
