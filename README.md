@@ -34,7 +34,7 @@ O **EPI Manager** foi projetado para cobrir todo o ciclo de vida do equipamento 
     * **Exames Médicos (ASO/NR-7):** Notificação de colaboradores com exames médicos vencendo, garantindo a saúde ocupacional.
     * **Análise Preditiva de Vida Útil:** Cálculo automático da durabilidade dos itens, gerando alertas de troca com margem de 5 dias para planejamento.
 * **👥 Gestão de Colaboradores & Perfis:** Cadastro detalhado de funcionários com **upload de foto de perfil**, organização por setores/cargos e monitoramento de histórico de saúde.
-* **📦 Gestão de Inventário Técnico & Visual: Controle completo de CA, fabricante e parâmetros de vida útil, com suporte a feedback visual por cores na listagem de equipamentos, sinalizando automaticamente níveis críticos de estoque para reposição.
+* **📦 Gestão de Inventário Técnico & Visual:** Controle completo de CA, fabricante e parâmetros de vida útil, com suporte a feedback visual por cores na listagem de equipamentos, sinalizando automaticamente níveis críticos de estoque para reposição.
 * **🔄 Fluxo de Baixa Inteligente:** Lógica de retorno ao estoque baseada no estado do item (Devolvido, Danificado ou Extraviado), com ajuste automático de saldo no inventário.
 * **📑 Registro de Movimentações:** Histórico imutável de custódia, garantindo a rastreabilidade total de quem utilizou cada equipamento e por quanto tempo.
 * **📄 Emissão de Documentos (PDF):** Geração automática da ficha de EPI conforme a **NR-6**, com todo o histórico de entregas pronto para assinatura e auditorias fiscais.
