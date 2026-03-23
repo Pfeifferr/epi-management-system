@@ -4,12 +4,6 @@ import os
 # Caminho base do projeto
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-<<<<<<< HEAD
-# Caminho para a carga inicial
-FIXURE_DIRS = [os.path.join(BASE_DIR, 'fixtures')]
-
-=======
->>>>>>> 72c65a8d901841a7d0a79f894012077a410c906a
 # SEGURANÇA: Mantenha a chave secreta em segredo em ambiente de produção!
 SECRET_KEY = 'django-insecure-yn6jsh%v5cah5taw5j(qj2q3mdaytqngsv@ae8doznxjf5!-ws'
 

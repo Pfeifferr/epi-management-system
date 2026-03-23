@@ -37,19 +37,11 @@
                     <form method="post">
                         {% csrf_token %}
                         
-<<<<<<< HEAD
                         <!-- 
                         Iteração dinâmica pelos campos do Django Form.
                         Permite renderizar todos os campos definidos no backend
                         sem precisar declarar cada um manualmente no template.
                         -->
-=======
-                        {# 
-                        Iteração dinâmica pelos campos do Django Form.
-                        Permite renderizar todos os campos definidos no backend
-                        sem precisar declarar cada um manualmente no template.
-                        #}
->>>>>>> 72c65a8d901841a7d0a79f894012077a410c906a
                         {% for field in form %}
                             <div class="mb-3">
 
